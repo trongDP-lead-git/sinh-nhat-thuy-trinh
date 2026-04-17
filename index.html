@@ -1,0 +1,166 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hành Trình Yêu Thương</title>
+    <style>
+      body,
+      html {
+        margin: 0;
+        padding: 0;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: #fff0f3; /* Màu hồng nhạt */
+        font-family: "Segoe UI", Roboto, sans-serif;
+        overflow: hidden;
+      }
+
+      .container {
+        text-align: center;
+        animation: fadeIn 2s ease-in-out;
+      }
+
+      h1 {
+        color: #ff4d79;
+        font-size: 2rem;
+        font-weight: 300;
+        margin-bottom: 10px;
+      }
+
+      .days-box {
+        background: white;
+        padding: 40px 60px;
+        border-radius: 30px;
+        box-shadow: 0 15px 35px rgba(255, 77, 121, 0.2);
+        position: relative;
+      }
+
+      #count-days {
+        display: block;
+        font-size: 6rem;
+        font-weight: 900;
+        color: #ff1a53;
+        line-height: 1;
+      }
+
+      .label {
+        font-size: 1.5rem;
+        color: #ff85a2;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+      }
+
+      .heart-icon {
+        font-size: 40px;
+        color: #ff4d79;
+        margin-top: 20px;
+        animation: pulse 1.5s infinite;
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      @keyframes pulse {
+        0% {
+          transform: scale(1);
+        }
+        50% {
+          transform: scale(1.2);
+        }
+        100% {
+          transform: scale(1);
+        }
+      }
+
+      /* Nút chuyển trang ẩn hiện sau khi số chạy xong */
+      #btn-next {
+        margin-top: 30px;
+        padding: 12px 30px;
+        border: none;
+        background: #ff4d79;
+        color: white;
+        border-radius: 25px;
+        cursor: pointer;
+        font-size: 1rem;
+        opacity: 0;
+        transition: opacity 1s;
+      }
+      .btn-next-style {
+        display: inline-block;
+        margin-top: 30px;
+        padding: 12px 30px;
+        background-color: #ff4d79;
+        color: white !important;
+
+        /* DÒNG QUAN TRỌNG NHẤT ĐÂY NÈ */
+        text-decoration: none;
+
+        border-radius: 25px;
+        font-size: 1rem;
+        font-weight: bold;
+        opacity: 1; /* Hoặc 0 nếu bạn đang dùng hiệu ứng hiện dần */
+        transition: all 0.3s ease;
+        cursor: pointer;
+        box-shadow: 0 4px 15px rgba(255, 77, 121, 0.3);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Chúng mình đã bên nhau được</h1>
+
+      <div class="days-box">
+        <span id="count-days">0</span>
+        <span class="label">Ngày</span>
+        <div class="heart-icon">❤️</div>
+      </div>
+
+      <!-- <button id="btn-next">Xem hành trình tiếp theo →</button> -->
+      <a href="trang2.html" id="btn-next" class="btn-next-style"
+        >Xem hành trình →</a
+      >
+    </div>
+
+    <script>
+      // --- CẤU HÌNH NGÀY YÊU NHAU TẠI ĐÂY ---
+      // Định dạng: (Năm, Tháng - 1, Ngày)
+      // Ví dụ: Ngày 15 tháng 5 năm 2023 thì điền (2023, 4, 15)
+      const ngayBatDau = new Date(2024, 9, 19);
+
+      const ngayHienTai = new Date();
+      const khoangCachTime = Math.abs(ngayHienTai - ngayBatDau);
+      const tongSoNgay = 575;
+
+      // Hiệu ứng số chạy
+      const countDisplay = document.getElementById("count-days");
+      const nextBtn = document.getElementById("btn-next");
+      let hienTai = 0;
+
+      const speed = 2000 / tongSoNgay; // Tốc độ chạy hoàn thành trong 2 giây
+
+      function updateCount() {
+        if (hienTai < tongSoNgay) {
+          hienTai += Math.ceil(tongSoNgay / 100); // Bước nhảy
+          if (hienTai > tongSoNgay) hienTai = tongSoNgay;
+          countDisplay.innerText = hienTai;
+          setTimeout(updateCount, 20);
+        } else {
+          nextBtn.style.opacity = "1"; // Hiện nút sau khi đếm xong
+        }
+      }
+
+      window.onload = updateCount;
+    </script>
+  </body>
+</html>

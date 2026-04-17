@@ -1,0 +1,212 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Những Cột Mốc Đáng Nhớ</title>
+    <style>
+      :root {
+        --pink-bg: #fff0f3;
+        --main-pink: #ff4d79;
+        --soft-pink: #ff85a2;
+      }
+
+      body {
+        margin: 0;
+        padding: 0;
+        background-color: var(--pink-bg);
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        color: #444;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .header {
+        margin: 50px 0;
+        text-align: center;
+        animation: fadeInDown 1s ease-out;
+      }
+
+      h1 {
+        color: var(--main-pink);
+        font-size: 2.5rem;
+        margin-bottom: 10px;
+      }
+
+      /* Thân bài: Timeline */
+      .timeline {
+        position: relative;
+        max-width: 600px;
+        width: 90%;
+        margin-bottom: 100px;
+      }
+
+      /* Đường kẻ dọc ở giữa */
+      .timeline::after {
+        content: "";
+        position: absolute;
+        width: 4px;
+        background-color: var(--soft-pink);
+        top: 0;
+        bottom: 0;
+        left: 20px;
+        margin-left: -2px;
+        border-radius: 10px;
+      }
+
+      .container {
+        padding: 10px 40px;
+        position: relative;
+        background-color: inherit;
+        width: 100%;
+        box-sizing: border-box;
+        opacity: 0;
+        transform: translateX(30px);
+        transition: all 0.6s ease-out;
+      }
+
+      .container.show {
+        opacity: 1;
+        transform: translateX(0);
+      }
+
+      /* Vòng tròn trên đường kẻ */
+      .container::after {
+        content: "❤️";
+        position: absolute;
+        width: 25px;
+        height: 25px;
+        left: 7px;
+        background-color: var(--pink-bg);
+        top: 15px;
+        z-index: 1;
+        font-size: 18px;
+      }
+
+      .content {
+        padding: 20px;
+        background-color: white;
+        position: relative;
+        border-radius: 15px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+      }
+
+      .date {
+        font-weight: bold;
+        color: var(--main-pink);
+        display: block;
+        margin-bottom: 5px;
+      }
+
+      .event-title {
+        font-size: 1.2rem;
+        margin: 0;
+        color: #333;
+      }
+
+      /* Nút chuyển sang trang 3 */
+      .btn-next {
+        position: fixed;
+        bottom: 30px;
+        right: 30px;
+        background: var(--main-pink);
+        color: white;
+        border: none;
+        padding: 15px 25px;
+        border-radius: 50px;
+        cursor: pointer;
+        box-shadow: 0 5px 15px rgba(255, 77, 121, 0.4);
+        font-weight: bold;
+        text-decoration: none;
+        transition: 0.3s;
+      }
+
+      .btn-next:hover {
+        transform: scale(1.1);
+        background: #ff1a53;
+      }
+
+      @keyframes fadeInDown {
+        from {
+          opacity: 0;
+          transform: translateY(-30px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="header">
+      <h1>Hành Trình của Tọn và Tin</h1>
+      <p>Từng bước chân, từng kỷ niệm...</p>
+    </div>
+
+    <div class="timeline">
+      <div class="container show">
+        <div class="content">
+          <span class="date">Ngày 19/09/2024</span>
+          <p class="event-title">📍 Lần thứ 2 anh tỏ tình em</p>
+          <p>Quá đã, lần đầu có người yêu</p>
+        </div>
+      </div>
+
+      <div class="container" style="transition-delay: 0.2s">
+        <div class="content">
+          <span class="date">Ngày 01/01/2025</span>
+          <p class="event-title">🌸 Cái tết đầu tiên cùng nhau</p>
+          <p>Đón giao thừa dưới tuyết từ Pleiku về (lạnh sun vòi)</p>
+        </div>
+      </div>
+
+      <div class="container" style="transition-delay: 0.4s">
+        <div class="content">
+          <span class="date">Ngày 14/02/2025</span>
+          <p class="event-title">✈️ Đón sinh nhật cùng tôi</p>
+          <p>Dạo phố Pleiku với nàng thơ, mua cho 2 hộp bánh quá ngoan</p>
+        </div>
+      </div>
+
+      <div class="container" style="transition-delay: 0.6s">
+        <div class="content">
+          <span class="date">Ngày 17/04/2025</span>
+          <p class="event-title">🥂 Đón sinh nhật em lần đầu tiên</p>
+          <p>Ừmm. Quên mọeeeeee</p>
+        </div>
+      </div>
+      <div class="container" style="transition-delay: 0.6s">
+        <div class="content">
+          <span class="date">Ngày 14/02/2026</span>
+          <p class="event-title">🥂 Cái sinh nhật của tôi lần thứ 2 bên ẻm</p>
+          <p>Áo quá đẹp, giữ 3 năm đến giờ vẫn mặc</p>
+        </div>
+      </div>
+    </div>
+
+    <a href="trang3.html" class="btn-next">Điều anh muốn nói →</a>
+
+    <script>
+      // Hiệu ứng hiện dần khi cuộn trang
+      window.addEventListener("scroll", () => {
+        const containers = document.querySelectorAll(".container");
+        containers.forEach((container) => {
+          const rect = container.getBoundingClientRect();
+          if (rect.top < window.innerHeight - 50) {
+            container.classList.add("show");
+          }
+        });
+      });
+
+      // Kích hoạt hiển thị cho các mục đầu tiên ngay khi tải trang
+      window.onload = () => {
+        const containers = document.querySelectorAll(".container");
+        containers.forEach((c, index) => {
+          setTimeout(() => c.classList.add("show"), index * 300);
+        });
+      };
+    </script>
+  </body>
+</html>

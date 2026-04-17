@@ -1,0 +1,168 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Những Điều Anh Yêu Ở Em</title>
+    <style>
+      :root {
+        --pink-light: #fff5f7;
+        --pink-medium: #ffb3c1;
+        --pink-bold: #fb6f92;
+      }
+
+      body {
+        margin: 0;
+        background-color: var(--pink-light);
+        font-family: "Segoe UI", sans-serif;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        min-height: 100vh;
+        overflow-x: hidden;
+      }
+
+      h1 {
+        margin-top: 50px;
+        color: var(--pink-bold);
+        font-size: 2.2rem;
+        text-align: center;
+        animation: fadeIn 1.5s ease-in;
+      }
+
+      .grid-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 25px;
+        padding: 40px;
+        max-width: 1000px;
+        width: 100%;
+      }
+
+      .love-card {
+        background: white;
+        padding: 30px;
+        border-radius: 20px;
+        text-align: center;
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+        transition: all 0.4s ease;
+        cursor: pointer;
+        border: 2px solid transparent;
+      }
+
+      .love-card:hover {
+        transform: translateY(-10px) rotate(2deg);
+        border-color: var(--pink-medium);
+        box-shadow: 0 15px 30px rgba(251, 111, 146, 0.2);
+      }
+
+      .icon {
+        font-size: 40px;
+        margin-bottom: 15px;
+        display: block;
+      }
+
+      h3 {
+        color: var(--pink-bold);
+        margin-bottom: 10px;
+      }
+
+      p {
+        color: #666;
+        line-height: 1.5;
+        font-size: 1rem;
+      }
+
+      /* Nút chuyển sang trang 4 */
+      .btn-next {
+        margin: 40px 0;
+        padding: 15px 35px;
+        background: var(--pink-bold);
+        color: white;
+        border: none;
+        border-radius: 50px;
+        font-weight: bold;
+        text-decoration: none;
+        box-shadow: 0 5px 15px rgba(251, 111, 146, 0.4);
+        transition: 0.3s;
+      }
+
+      .btn-next:hover {
+        background: #ff4d79;
+        letter-spacing: 1px;
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 1;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Những điều nhỏ bé anh yêu...</h1>
+
+    <div class="grid-container">
+      <div class="love-card">
+        <span class="icon">✨</span>
+        <h3>Em luôn đúng, anh thì sai</h3>
+        <p>Haizz, luôn cho rằng mình đúng tất cả</p>
+      </div>
+
+      <div class="love-card">
+        <span class="icon">🌸</span>
+        <h3>Sự dịu dàng vốn (Không) có</h3>
+        <p>Lúc nào cũng dịu dàng với tôi bằng cách chửi tôi...</p>
+      </div>
+
+      <div class="love-card">
+        <span class="icon">🍓</span>
+        <h3>Đôi mắt ấy</h3>
+        <p>Đúng là đôi mắt biếc, đẹp như nàng thơ trong tranh kk</p>
+      </div>
+
+      <div class="love-card">
+        <span class="icon">☕</span>
+        <h3>Sự yêu thương</h3>
+        <p>Bày tỏ cảm xúc bằng cách cắn tôi, phun nước miếng vô cổ tôi</p>
+      </div>
+
+      <div class="love-card">
+        <span class="icon">🌈</span>
+        <h3>Con gái thật vô lý</h3>
+        <p>
+          Lúc nào mình lái xe cũng bị la, nắng nóng quá cũng chử mình. Haizzz
+        </p>
+      </div>
+
+      <div class="love-card">
+        <span class="icon">🌙</span>
+        <h3>Trong mắt ẻm, mình rất đa năng</h3>
+        <p>
+          có lúc làm shipper, có lúc làm cái ngân hàng, đôi khi còn là chatGPT.
+          Bên cạnh đó tôi còn học thêm Logistics nữa
+          kkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk kkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk
+        </p>
+      </div>
+      <br /><br /><br /><br /><br />
+      <div class="love-card">
+        <span class="icon">💌</span>
+        <h3>Giỡn thôi</h3>
+        <p>
+          Thật ra là nhiều lúc tôi cũng cảm thấy mình may mắn khi quen được
+          ẻm(Đôi lúc không), ẻm là một người rất hiểu chuyện và luôn dạy cho
+          mình những điều nhỏ nhặt. Ẻm biết mình nghèo vcl nên không đòi hỏi gì
+          hết. Nói chung là đồng hành với tôi những ngày mưa thì những ngày nắng
+          cũng vậy nha!! Yêu em
+        </p>
+      </div>
+    </div>
+
+    <a href="trang4.html" class="btn-next"
+      >Tiếp theo, cùng ôn lại những khoảnh khắc điên khùng đi→</a
+    >
+  </body>
+</html>

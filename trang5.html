@@ -1,0 +1,173 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Món Quà Cuối Cùng</title>
+    <style>
+      :root {
+        --primary-pink: #ff4d79;
+        --gold: #ffd700;
+      }
+
+      body {
+        margin: 0;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: radial-gradient(circle, #fff0f3 0%, #ffc1cf 100%);
+        font-family: "Segoe UI", sans-serif;
+        overflow: hidden;
+        text-align: center;
+      }
+
+      /* Hộp quà */
+      .gift-container {
+        cursor: pointer;
+        position: relative;
+        transition: transform 0.3s;
+      }
+
+      .gift-box {
+        font-size: 150px;
+        animation: shake 0.5s infinite;
+      }
+
+      @keyframes shake {
+        0% {
+          transform: rotate(0);
+        }
+        25% {
+          transform: rotate(5deg);
+        }
+        50% {
+          transform: rotate(0);
+        }
+        75% {
+          transform: rotate(-5deg);
+        }
+        100% {
+          transform: rotate(0);
+        }
+      }
+
+      /* Khi mở quà */
+      .opened-content {
+        display: none;
+        animation: zoomIn 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      }
+
+      @keyframes zoomIn {
+        from {
+          opacity: 0;
+          transform: scale(0.5);
+        }
+        to {
+          opacity: 1;
+          transform: scale(1);
+        }
+      }
+
+      h1 {
+        color: var(--primary-pink);
+        margin-bottom: 10px;
+      }
+      p {
+        color: #666;
+        font-size: 1.1rem;
+      }
+
+      /* Hiệu ứng QR hoặc số tài khoản */
+      .money-card {
+        background: white;
+        padding: 20px;
+        border-radius: 20px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        display: inline-block;
+        margin-top: 20px;
+        border: 3px solid var(--gold);
+      }
+
+      .money-card img {
+        width: 200px; /* Chỗ này bạn để ảnh mã QR MoMo/Ngân hàng */
+        border-radius: 10px;
+      }
+
+      /* Tiền rơi */
+      .money {
+        position: absolute;
+        font-size: 30px;
+        z-index: 1000;
+        pointer-events: none;
+        animation: fall linear forwards;
+      }
+
+      @keyframes fall {
+        to {
+          transform: translateY(100vh) rotate(360deg);
+        }
+      }
+
+      .btn-restart {
+        margin-top: 30px;
+        background: var(--primary-pink);
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 20px;
+        cursor: pointer;
+        text-decoration: none;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="gift-container" id="gift" onclick="openGift()">
+      <div class="gift-box">🎁</div>
+      <p style="font-weight: bold; color: #ff4d79">
+        Ấn vào hộp quà để nhận điều bất ngờ!
+      </p>
+    </div>
+
+    <div class="opened-content" id="content">
+      <h1>Happy Birthday Bé Yêu! 🎂</h1>
+      <p>Phần thưởng cho người bạn gái tuyệt vời nhất thế gian:</p>
+
+      <div class="money-card">
+        <h2 style="color: #27ae60">+417.000 VNĐ</h2>
+        <p>(Đã gửi vào trái tim và ví của em! 😘)</p>
+      </div>
+
+      <br />
+      <a href="index.html" class="btn-restart">Xem lại từ đầu ❤️</a>
+    </div>
+
+    <script>
+      function openGift() {
+        // Ẩn hộp quà
+        document.getElementById("gift").style.display = "none";
+        // Hiện nội dung quà
+        document.getElementById("content").style.display = "block";
+
+        // Tạo hiệu ứng tiền rơi
+        for (let i = 0; i < 50; i++) {
+          setTimeout(createMoney, i * 100);
+        }
+      }
+
+      function createMoney() {
+        const icons = ["💵", "💰", "💸", "🧧", "💎"];
+        const el = document.createElement("div");
+        el.className = "money";
+        el.innerText = icons[Math.floor(Math.random() * icons.length)];
+        el.style.left = Math.random() * 100 + "vw";
+        el.style.top = "-50px";
+        el.style.animationDuration = Math.random() * 2 + 2 + "s";
+        el.style.opacity = Math.random();
+        document.body.appendChild(el);
+
+        setTimeout(() => el.remove(), 4000);
+      }
+    </script>
+  </body>
+</html>
