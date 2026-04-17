@@ -14,6 +14,53 @@
         font-family: "Segoe UI", sans-serif;
       }
 
+      /* Lớp nền đen khi phóng to ảnh */
+      .lightbox {
+        display: none; /* Ban đầu ẩn đi */
+        position: fixed;
+        z-index: 1000;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.9);
+        justify-content: center;
+        align-items: center;
+        cursor: zoom-out;
+      }
+
+      /* Ảnh phóng to ở giữa */
+      .lightbox img {
+        max-width: 90%;
+        max-height: 80%;
+        border: 3px solid white;
+        border-radius: 10px;
+        box-shadow: 0 0 30px rgba(255, 255, 255, 0.2);
+        animation: zoomIn 0.3s ease-out;
+      }
+
+      @keyframes zoomIn {
+        from {
+          transform: scale(0.7);
+          opacity: 0;
+        }
+        to {
+          transform: scale(1);
+          opacity: 1;
+        }
+      }
+
+      /* Nút đóng (tùy chọn) */
+      .close-lightbox {
+        position: absolute;
+        top: 20px;
+        right: 30px;
+        color: white;
+        font-size: 40px;
+        font-weight: bold;
+        cursor: pointer;
+      }
+
       /* Lưới ảnh lấp đầy toàn màn hình */
       .photo-wall {
         display: grid;
@@ -65,7 +112,7 @@
         padding: 10px 20px; /* Thu nhỏ padding */
         display: inline-block;
         border-radius: 30px; /* Bo góc nhỏ lại một chút */
-        font-size: 1.2rem; /* CHỮ NHỎ LẠI: Bạn có thể chỉnh 1.0 đến 1.5 tùy ý */dd
+        font-size: 1.2rem; /* CHỮ NHỎ LẠI: Bạn có thể chỉnh 1.0 đến 1.5 tùy ý */
         box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
         letter-spacing: 1px;
         margin: 0;
@@ -110,91 +157,256 @@
         animation: zoomIn 0.8s ease forwards;
       }
     </style>
+    <script>
+      function zoomImage(element) {
+        const lightbox = document.getElementById("lightbox");
+        const lightboxImg = document.getElementById("lightbox-img");
+
+        // Lấy đường dẫn ảnh từ tấm ảnh vừa click
+        lightboxImg.src = element.src;
+
+        // Hiển thị lightbox
+        lightbox.style.display = "flex";
+      }
+
+      function closeImage() {
+        // Ẩn lightbox khi click vào vùng đen hoặc nút đóng
+        document.getElementById("lightbox").style.display = "none";
+      }
+    </script>
   </head>
   <body>
+    <div id="lightbox" class="lightbox" onclick="closeImage()">
+      <span class="close-lightbox">&times;</span>
+      <img id="lightbox-img" src="" alt="Zoomed Image" />
+    </div>
     <div class="overlay-text">
       <h1>Những khoảnh khắc điên khùng của Tọn và Tin</h1>
     </div>
 
     <div class="photo-wall">
-      <div class="photo-item"><img src="anh/1.jpg" /></div>
-      <div class="photo-item"><img src="anh/2.jpg" /></div>
-      <div class="photo-item"><img src="anh/3.jpg" /></div>
-      <div class="photo-item"><img src="anh/4.jpg" /></div>
-      <div class="photo-item"><img src="anh/5.jpg" /></div>
-      <div class="photo-item"><img src="anh/6.jpg" /></div>
-      <div class="photo-item"><img src="anh/7.jpg" /></div>
-      <div class="photo-item"><img src="anh/8.jpg" /></div>
-      <div class="photo-item"><img src="anh/9.jpg" /></div>
-      <div class="photo-item"><img src="anh/10.jpg" /></div>
+      <div class="photo-item">
+        <<img onclick="zoomImage(this)" src="anh/1.jpg" />
+      </div>
+      <div class="photo-item">
+        <<img onclick="zoomImage(this)" src="anh/2.jpg" />
+      </div>
+      <div class="photo-item">
+        <<img onclick="zoomImage(this)" src="anh/3.jpg" />
+      </div>
+      <div class="photo-item">
+        <<img onclick="zoomImage(this)" src="anh/4.jpg" />
+      </div>
+      <div class="photo-item">
+        <<img onclick="zoomImage(this)" src="anh/5.jpg" />
+      </div>
+      <div class="photo-item">
+        <<img onclick="zoomImage(this)" src="anh/6.jpg" />
+      </div>
+      <div class="photo-item">
+        <<img onclick="zoomImage(this)" src="anh/7.jpg" />
+      </div>
+      <div class="photo-item">
+        <<img onclick="zoomImage(this)" src="anh/8.jpg" />
+      </div>
+      <div class="photo-item">
+        <<img onclick="zoomImage(this)" src="anh/9.jpg" />
+      </div>
+      <div class="photo-item">
+        <<img onclick="zoomImage(this)" src="anh/10.jpg" />
+      </div>
 
-      <div class="photo-item"><img src="anh/11.jpg" /></div>
-      <div class="photo-item"><img src="anh/12.jpg" /></div>
-      <div class="photo-item"><img src="anh/13.jpg" /></div>
-      <div class="photo-item"><img src="anh/14.jpg" /></div>
-      <div class="photo-item"><img src="anh/15.jpg" /></div>
-      <div class="photo-item"><img src="anh/16.jpg" /></div>
-      <div class="photo-item"><img src="anh/17.jpg" /></div>
-      <div class="photo-item"><img src="anh/18.jpg" /></div>
-      <div class="photo-item"><img src="anh/19.jpg" /></div>
-      <div class="photo-item"><img src="anh/20.jpg" /></div>
+      <div class="photo-item">
+        <<img onclick="zoomImage(this)" src="anh/11.jpg" />
+      </div>
+      <div class="photo-item">
+        <<img onclick="zoomImage(this)" src="anh/12.jpg" />
+      </div>
+      <div class="photo-item">
+        <<img onclick="zoomImage(this)" src="anh/13.jpg" />
+      </div>
+      <div class="photo-item">
+        <<img onclick="zoomImage(this)" src="anh/14.jpg" />
+      </div>
+      <div class="photo-item">
+        <<img onclick="zoomImage(this)" src="anh/15.jpg" />
+      </div>
+      <div class="photo-item">
+        <<img onclick="zoomImage(this)" src="anh/16.jpg" />
+      </div>
+      <div class="photo-item">
+        <<img onclick="zoomImage(this)" src="anh/17.jpg" />
+      </div>
+      <div class="photo-item">
+        <<img onclick="zoomImage(this)" src="anh/18.jpg" />
+      </div>
+      <div class="photo-item">
+        <<img onclick="zoomImage(this)" src="anh/19.jpg" />
+      </div>
+      <div class="photo-item">
+        <<img onclick="zoomImage(this)" src="anh/20.jpg" />
+      </div>
 
-      <div class="photo-item"><img src="anh/21.jpg" /></div>
-      <div class="photo-item"><img src="anh/22.jpg" /></div>
-      <div class="photo-item"><img src="anh/23.jpg" /></div>
-      <div class="photo-item"><img src="anh/24.jpg" /></div>
-      <div class="photo-item"><img src="anh/25.jpg" /></div>
-      <div class="photo-item"><img src="anh/26.jpg" /></div>
-      <div class="photo-item"><img src="anh/27.jpg" /></div>
-      <div class="photo-item"><img src="anh/28.jpg" /></div>
-      <div class="photo-item"><img src="anh/29.jpg" /></div>
-      <div class="photo-item"><img src="anh/30.jpg" /></div>
+      <div class="photo-item">
+        <<img onclick="zoomImage(this)" src="anh/21.jpg" />
+      </div>
+      <div class="photo-item">
+        <<img onclick="zoomImage(this)" src="anh/22.jpg" />
+      </div>
+      <div class="photo-item">
+        <<img onclick="zoomImage(this)" src="anh/23.jpg" />
+      </div>
+      <div class="photo-item">
+        <<img onclick="zoomImage(this)" src="anh/24.jpg" />
+      </div>
+      <div class="photo-item">
+        <<img onclick="zoomImage(this)" src="anh/25.jpg" />
+      </div>
+      <div class="photo-item">
+        <<img onclick="zoomImage(this)" src="anh/26.jpg" />
+      </div>
+      <div class="photo-item">
+        <<img onclick="zoomImage(this)" src="anh/27.jpg" />
+      </div>
+      <div class="photo-item">
+        <<img onclick="zoomImage(this)" src="anh/28.jpg" />
+      </div>
+      <div class="photo-item">
+        <<img onclick="zoomImage(this)" src="anh/29.jpg" />
+      </div>
+      <div class="photo-item">
+        <<img onclick="zoomImage(this)" src="anh/30.jpg" />
+      </div>
 
-      <div class="photo-item"><img src="anh/31.jpg" /></div>
-      <div class="photo-item"><img src="anh/32.jpg" /></div>
-      <div class="photo-item"><img src="anh/33.jpg" /></div>
-      <div class="photo-item"><img src="anh/34.jpg" /></div>
-      <div class="photo-item"><img src="anh/35.jpg" /></div>
-      <div class="photo-item"><img src="anh/36.jpg" /></div>
-      <div class="photo-item"><img src="anh/37.jpg" /></div>
-      <div class="photo-item"><img src="anh/38.jpg" /></div>
-      <div class="photo-item"><img src="anh/39.jpg" /></div>
-      <div class="photo-item"><img src="anh/40.jpg" /></div>
+      <div class="photo-item">
+        <<img onclick="zoomImage(this)" src="anh/31.jpg" />
+      </div>
+      <div class="photo-item">
+        <<img onclick="zoomImage(this)" src="anh/32.jpg" />
+      </div>
+      <div class="photo-item">
+        <<img onclick="zoomImage(this)" src="anh/33.jpg" />
+      </div>
+      <div class="photo-item">
+        <<img onclick="zoomImage(this)" src="anh/34.jpg" />
+      </div>
+      <div class="photo-item">
+        <<img onclick="zoomImage(this)" src="anh/35.jpg" />
+      </div>
+      <div class="photo-item">
+        <<img onclick="zoomImage(this)" src="anh/36.jpg" />
+      </div>
+      <div class="photo-item">
+        <<img onclick="zoomImage(this)" src="anh/37.jpg" />
+      </div>
+      <div class="photo-item">
+        <<img onclick="zoomImage(this)" src="anh/38.jpg" />
+      </div>
+      <div class="photo-item">
+        <<img onclick="zoomImage(this)" src="anh/39.jpg" />
+      </div>
+      <div class="photo-item">
+        <<img onclick="zoomImage(this)" src="anh/40.jpg" />
+      </div>
 
-      <div class="photo-item"><img src="anh/41.jpg" /></div>
-      <div class="photo-item"><img src="anh/42.jpg" /></div>
-      <div class="photo-item"><img src="anh/43.jpg" /></div>
-      <div class="photo-item"><img src="anh/44.jpg" /></div>
-      <div class="photo-item"><img src="anh/45.jpg" /></div>
-      <div class="photo-item"><img src="anh/46.jpg" /></div>
-      <div class="photo-item"><img src="anh/47.jpg" /></div>
-      <div class="photo-item"><img src="anh/48.jpg" /></div>
-      <div class="photo-item"><img src="anh/49.jpg" /></div>
-      <div class="photo-item"><img src="anh/50.jpg" /></div>
+      <div class="photo-item">
+        <<img onclick="zoomImage(this)" src="anh/41.jpg" />
+      </div>
+      <div class="photo-item">
+        <<img onclick="zoomImage(this)" src="anh/42.jpg" />
+      </div>
+      <div class="photo-item">
+        <<img onclick="zoomImage(this)" src="anh/43.jpg" />
+      </div>
+      <div class="photo-item">
+        <<img onclick="zoomImage(this)" src="anh/44.jpg" />
+      </div>
+      <div class="photo-item">
+        <<img onclick="zoomImage(this)" src="anh/45.jpg" />
+      </div>
+      <div class="photo-item">
+        <<img onclick="zoomImage(this)" src="anh/46.jpg" />
+      </div>
+      <div class="photo-item">
+        <<img onclick="zoomImage(this)" src="anh/47.jpg" />
+      </div>
+      <div class="photo-item">
+        <<img onclick="zoomImage(this)" src="anh/48.jpg" />
+      </div>
+      <div class="photo-item">
+        <<img onclick="zoomImage(this)" src="anh/49.jpg" />
+      </div>
+      <div class="photo-item">
+        <<img onclick="zoomImage(this)" src="anh/50.jpg" />
+      </div>
 
-      <div class="photo-item"><img src="anh/51.jpg" /></div>
-      <div class="photo-item"><img src="anh/52.jpg" /></div>
-      <div class="photo-item"><img src="anh/53.jpg" /></div>
-      <div class="photo-item"><img src="anh/54.jpg" /></div>
-      <div class="photo-item"><img src="anh/55.jpg" /></div>
-      <div class="photo-item"><img src="anh/56.jpg" /></div>
-      <div class="photo-item"><img src="anh/57.jpg" /></div>
-      <div class="photo-item"><img src="anh/58.jpg" /></div>
-      <div class="photo-item"><img src="anh/59.jpg" /></div>
-      <div class="photo-item"><img src="anh/60.jpg" /></div>
+      <div class="photo-item">
+        <<img onclick="zoomImage(this)" src="anh/51.jpg" />
+      </div>
+      <div class="photo-item">
+        <<img onclick="zoomImage(this)" src="anh/52.jpg" />
+      </div>
+      <div class="photo-item">
+        <<img onclick="zoomImage(this)" src="anh/53.jpg" />
+      </div>
+      <div class="photo-item">
+        <<img onclick="zoomImage(this)" src="anh/54.jpg" />
+      </div>
+      <div class="photo-item">
+        <<img onclick="zoomImage(this)" src="anh/55.jpg" />
+      </div>
+      <div class="photo-item">
+        <<img onclick="zoomImage(this)" src="anh/56.jpg" />
+      </div>
+      <div class="photo-item">
+        <<img onclick="zoomImage(this)" src="anh/57.jpg" />
+      </div>
+      <div class="photo-item">
+        <<img onclick="zoomImage(this)" src="anh/58.jpg" />
+      </div>
+      <div class="photo-item">
+        <<img onclick="zoomImage(this)" src="anh/59.jpg" />
+      </div>
+      <div class="photo-item">
+        <<img onclick="zoomImage(this)" src="anh/60.jpg" />
+      </div>
 
-      <div class="photo-item"><img src="anh/61.jpg" /></div>
-      <div class="photo-item"><img src="anh/62.jpg" /></div>
-      <div class="photo-item"><img src="anh/63.jpg" /></div>
-      <div class="photo-item"><img src="anh/64.jpg" /></div>
-      <div class="photo-item"><img src="anh/65.jpg" /></div>
-      <div class="photo-item"><img src="anh/66.jpg" /></div>
-      <div class="photo-item"><img src="anh/67.jpg" /></div>
-      <div class="photo-item"><img src="anh/68.jpg" /></div>
-      <div class="photo-item"><img src="anh/69.jpg" /></div>
-      <div class="photo-item"><img src="anh/70.jpg" /></div>
-      <div class="photo-item"><img src="anh/71.jpg" /></div>
-      <div class="photo-item"><img src="anh/72.jpg" /></div>
+      <div class="photo-item">
+        <<img onclick="zoomImage(this)" src="anh/61.jpg" />
+      </div>
+      <div class="photo-item">
+        <<img onclick="zoomImage(this)" src="anh/62.jpg" />
+      </div>
+      <div class="photo-item">
+        <<img onclick="zoomImage(this)" src="anh/63.jpg" />
+      </div>
+      <div class="photo-item">
+        <<img onclick="zoomImage(this)" src="anh/64.jpg" />
+      </div>
+      <div class="photo-item">
+        <<img onclick="zoomImage(this)" src="anh/65.jpg" />
+      </div>
+      <div class="photo-item">
+        <<img onclick="zoomImage(this)" src="anh/66.jpg" />
+      </div>
+      <div class="photo-item">
+        <<img onclick="zoomImage(this)" src="anh/67.jpg" />
+      </div>
+      <div class="photo-item">
+        <<img onclick="zoomImage(this)" src="anh/68.jpg" />
+      </div>
+      <div class="photo-item">
+        <<img onclick="zoomImage(this)" src="anh/69.jpg" />
+      </div>
+      <div class="photo-item">
+        <<img onclick="zoomImage(this)" src="anh/70.jpg" />
+      </div>
+      <div class="photo-item">
+        <<img onclick="zoomImage(this)" src="anh/71.jpg" />
+      </div>
+      <div class="photo-item">
+        <<img onclick="zoomImage(this)" src="anh/72.jpg" />
+      </div>
     </div>
 
     <a href="trang5.html" class="btn-next">Món quà cuối cùng →</a>
